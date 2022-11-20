@@ -1,12 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
-import { NAME_USER } from "@env"
+import { StateProvider } from "./hooks/useStateValue";
+import Screens from "./src/components/Screens";
+import reducer from "./utils/reducer";
+import state from "./utils/state";
 
 export default function App() {
   return (
-    <View className="flex-1 justify-center items-center bg-red-500">
-      <Text className="text-center text-xl text-white">Open up {NAME_USER} to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <StateProvider state={state} reducer={reducer}>
+      <Screens />
+    </StateProvider>
   );
 }
