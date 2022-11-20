@@ -1,5 +1,6 @@
-import { View, TextInput, Pressable, Text, Alert } from "react-native";
+import { View, TextInput, Pressable, Text } from "react-native";
 import React, { useState } from "react";
+import Toast from "react-native-toast-message";
 
 const Signin = ({ navigation }) => {
   const [state, setstate] = useState({
@@ -8,14 +9,16 @@ const Signin = ({ navigation }) => {
   });
   const signInHandler = () => {
     if (state.password.length < 6) {
-      Alert.alert("Error", "Minimum password length should be 6", [
-        {
-          text: "Cancel",
-          style: "cancel",
-        },
-      ]);
+      Toast.show({
+        type: "error",
+        text1: "Password should have minimum 6 characters",
+      });
       return;
     }
+    Toast.show({
+      type: "success",
+      text1: "Signed in successfully",
+    });
     navigation.navigate("home");
   };
   return (
