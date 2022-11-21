@@ -7,7 +7,7 @@ const Card = ({ item }) => {
   const [liked, setliked] = useState(false);
   return (
     <View className="border items-center justify-center w-3/4rounded-md bg-white flex flex-col space-y-5">
-      <View>
+      <View className="absolute right-5">
         {liked ? (
           <HeartFilled
             onClick={() => setliked(!liked)}
