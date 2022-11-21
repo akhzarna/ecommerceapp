@@ -6,7 +6,6 @@ import Signin from "../screens/Signin";
 import Signup from "../screens/Signup";
 import Toast from "react-native-toast-message";
 import Flatlist from "../screens/FlatList";
-import Sectionlist from "../screens/SectionList";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,14 +28,7 @@ const Screens = () => {
                 name="flatlist"
                 component={Flatlist}
                 options={{
-                  title: "FlatList",
-                }}
-              />
-              <Stack.Screen
-                name="sectionlist"
-                component={Sectionlist}
-                options={{
-                  title: "SectionList",
+                  title: "Ecommerce",
                 }}
               />
             </>
