@@ -16,41 +16,48 @@ const Screens = () => {
     <>
       <NavigationContainer>
         <Stack.Navigator initialRouteName={user ? "home" : "signin"}>
-          <Stack.Screen
-            name="home"
-            component={Home}
-            options={{
-              title: "Home",
-            }}
-          />
-          <Stack.Screen
-            name="signin"
-            component={Signin}
-            options={{
-              title: "SignIn",
-            }}
-          />
-          <Stack.Screen
-            name="signup"
-            component={Signup}
-            options={{
-              title: "SignUp",
-            }}
-          />
-          <Stack.Screen
-            name="flatlist"
-            component={Flatlist}
-            options={{
-              title: "FlatList",
-            }}
-          />
-          <Stack.Screen
-            name="sectionlist"
-            component={Sectionlist}
-            options={{
-              title: "SectionList",
-            }}
-          />
+          {user ? (
+            <>
+              <Stack.Screen
+                name="home"
+                component={Home}
+                options={{
+                  title: "Home",
+                }}
+              />
+              <Stack.Screen
+                name="flatlist"
+                component={Flatlist}
+                options={{
+                  title: "FlatList",
+                }}
+              />
+              <Stack.Screen
+                name="sectionlist"
+                component={Sectionlist}
+                options={{
+                  title: "SectionList",
+                }}
+              />
+            </>
+          ) : (
+            <>
+              <Stack.Screen
+                name="signin"
+                component={Signin}
+                options={{
+                  title: "SignIn",
+                }}
+              />
+              <Stack.Screen
+                name="signup"
+                component={Signup}
+                options={{
+                  title: "SignUp",
+                }}
+              />
+            </>
+          )}
         </Stack.Navigator>
       </NavigationContainer>
       <Toast position="bottom" bottomOffset={20} />

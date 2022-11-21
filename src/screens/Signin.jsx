@@ -1,8 +1,10 @@
 import { View, TextInput, Pressable, Text } from "react-native";
 import React, { useState } from "react";
 import Toast from "react-native-toast-message";
+import useStateValue from "../../hooks/useStateValue";
 
 const Signin = ({ navigation }) => {
+  const [, dispatch] = useStateValue();
   const [state, setstate] = useState({
     email: "",
     password: "",
@@ -19,7 +21,7 @@ const Signin = ({ navigation }) => {
       type: "success",
       text1: "Signed in successfully",
     });
-    navigation.navigate("home");
+    dispatch({ type: "CHANGE_USER" });
   };
   return (
     <View className="flex-1 space-y-5 items-center justify-center px-2">
