@@ -10,7 +10,7 @@ const Flatlist = () => {
 
   return (
     <View className="flex-1 items-center bg-gray-100 justify-center space-y-10">
-      <View className="flex w-full h-full">
+      <View className=" w-full h-full">
         <FlatList
           data={apiData}
           renderItem={renderItem}

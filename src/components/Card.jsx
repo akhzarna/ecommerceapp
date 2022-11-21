@@ -3,15 +3,16 @@ import React from "react";
 
 const Card = ({ item }) => {
   return (
-    <View>
-      <View className="border w-full rounded-md bg-white flex flex-col space-y-5">
-        <Image source={item?.image} />
-        <Text>{item?.title}</Text>
-        <Text>{item?.price}</Text>
-        <Pressable>
-          <Text>BUY NOW</Text>
-        </Pressable>
-      </View>
+    <View className="border items-center justify-center w-3/4rounded-md bg-white flex flex-col space-y-5">
+      <Image
+        style={{ width: "200", height: 200 }}
+        source={{ uri: item?.image }}
+      />
+      <Text>{item?.title}</Text>
+      <Text className="text-blue-400">${item?.price}</Text>
+      <Pressable>
+        <Text>BUY NOW</Text>
+      </Pressable>
     </View>
   );
 };
