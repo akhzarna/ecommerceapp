@@ -1,11 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import { StateProvider } from "./hooks/useStateValue";
+import Screens from "./src/components/Screens";
+import reducer from "./utils/reducer";
+import state from "./utils/state";
 
 export default function App() {
   return (
-    <View>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <StateProvider state={state} reducer={reducer}>
+      <Screens />
+    </StateProvider>
   );
 }
