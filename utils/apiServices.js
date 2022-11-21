@@ -18,7 +18,7 @@ export const getDatafromDB = async () => {
         // let data = await AsyncStorage.getItem("Items")
         // console.log("Hi", data);
         // if (!data) {
-        const data = getItems()
+        const data = await getItems()
         // }
         return data
 
