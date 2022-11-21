@@ -7,7 +7,7 @@ const useAPI = () => {
     async function setAPIData() {
         try {
             const data = await getDatafromDB()
-            setapiDATA(data)
+            setapiDATA(data ? data : [])
         } catch (error) {
             console.log(error)
         }
