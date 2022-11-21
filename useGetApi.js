@@ -2,15 +2,16 @@ import React, { useState, useEffect } from "react";
 
 const useGetApi = (url) => {
   const [data, setData] = useState([]);
-  useEffect(() => {
+
+  const getData = () => {
     fetch(url)
       .then((response) => response.json())
       .then((resp) => {
         setData(resp);
       });
-  }, [url]);
+  };
 
-  return { data };
+  return { data, setData, getData };
 };
 
 export default useGetApi;

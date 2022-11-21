@@ -13,23 +13,31 @@ import useGetApi from "./useGetApi";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function App() {
-  //const { data } = useGetApi("https://fakestoreapi.com/products");
-  const [data, setData] = useState([]);
+  const { data, setData, getData } = useGetApi(
+    "https://fakestoreapi.com/products"
+  );
+  //const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((resp) => {
-        setData(resp);
-      });
-    console.log(JSON.stringify(data, null, 2));
+    if (!dataExist()) getData();
+    readData();
   }, []);
 
   useEffect(() => {
-    readData();
+    if (!dataExist()) changeArray();
   }, [data]);
 
-  async function readData() {
+  async function setAsyncData(data) {
+    console.log(JSON.stringify(data, null, 2));
+    await AsyncStorage.setItem("data", JSON.stringify(data));
+  }
+
+  async function dataExist() {
+    let get = await AsyncStorage.getItem("data");
+    return get ? true : false;
+  }
+
+  function changeArray() {
     let newData = data.map((item) => {
       return {
         ...item,
@@ -37,7 +45,10 @@ export default function App() {
       };
     });
 
-    await AsyncStorage.setItem("data", JSON.stringify(newData));
+    setAsyncData(newData);
+  }
+
+  async function readData() {
     let get = await AsyncStorage.getItem("data");
     if (get) {
       setData(JSON.parse(get));
@@ -51,8 +62,9 @@ export default function App() {
         i.favourite = !i.favourite;
       }
     });
-    // console.log(JSON.stringify(newArr, null, 2));
+    //console.log(JSON.stringify(newArr, null, 2));
     setData(newArr);
+    setAsyncData(newArr);
   }
 
   return (
@@ -76,14 +88,17 @@ export default function App() {
                 style={styles.icon}
                 onPress={() => handleFavourite(item)}
               >
-                <Image
-                  source={
-                    item.favourite
-                      ? require("./assets/fill.png")
-                      : require("./assets/heart.png")
-                  }
-                  style={{ width: 30, height: 30 }}
-                />
+                {item.favourite ? (
+                  <Image
+                    source={require("./assets/fill.png")}
+                    style={{ width: 30, height: 30 }}
+                  />
+                ) : (
+                  <Image
+                    source={require("./assets/heart.png")}
+                    style={{ width: 30, height: 30 }}
+                  />
+                )}
               </TouchableOpacity>
               <Image source={{ uri: item.image }} style={styles.image} />
               <View style={{ alignItems: "center" }}>
