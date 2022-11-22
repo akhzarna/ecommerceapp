@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ecommerce",
-    "slug": "ecommerce",
+    "name": "midlab",
+    "slug": "midlab",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
