@@ -36,17 +36,17 @@ console.log(books)
             columnWrapperStyle={{justifyContent: 'space-between'}}
             renderItem={
                 ({item}) => (
-<View style={{backgroundColor:'#E9E5E5', margin:10, height:300,width:180,borderRadius:10, elevation:2,alignItems:'center' }}>
+<View style={{backgroundColor:'#E9E5E5', margin:10, height:300,width:175,borderRadius:10, elevation:2,alignItems:'center' }}>
 <Image source={{uri:item.image}} style={{height:100,width:100,marginTop:20}} />
                     
-                    <Text style={{fontSize:15,margin:10}}> {item.title}</Text>
-                    <Text style={{fontSize:20,margin:10,fontWeight:'bold'}}>  ${item.price}</Text>
-                    <Text style={{fontSize:20,margin:10,fontWeight:'bold'}}>  Buy Now</Text>
+                    <Text style={{fontSize:10,margin:10}}> {item.title}</Text>
+                    <Text style={{fontSize:15,margin:10,fontWeight:'bold'}}>  ${item.price}</Text>
+                    <Text style={{fontSize:15,margin:10,fontWeight:'bold'}}>  Buy Now</Text>
                     
                     <TouchableOpacity style={{width:100, height:50,margin:3, backgroundColor:'#F02E2E', alignItems:'center',justifyContent:'center',borderRadius:10}}
                       onPress={()=> bm(item.title,item.price,item.image)}
           >
-        <Text style={{fontWeight:"bold",color:"white"}}>Add</Text>
+        <Text style={{fontWeight:"bold",color:"grey"}}>Add</Text>
         
       </TouchableOpacity>
                 </View>
